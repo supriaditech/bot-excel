@@ -7,12 +7,12 @@ const puppeteer = require("puppeteer");
 
   // 1. Link Spreadsheet War (Gunakan link LENGKAP beserta "?gid=xxx..." agar sheet yang dipilih benar)
   const url =
-    "https://docs.google.com/spreadsheets/d/1QirCchZgcxk3Zmc4mZhNgerJ4jbWA2uqVWbjSqRgLl0/edit?gid=0#gid=0";
+    "https://docs.google.com/spreadsheets/d/1_WdrOVcB9wfziod3liUbtZBMquVpLGByLIFvoSI3TCk/edit?gid=1657747096#gid=1657747096";
 
   // 2. Waktu eksekusi (Format: HH:MM:SS) - Tambahkan Detik!
   // Contoh: '13:14:00' atau '13:14:30' (jam 13, menit 14, detik 30)
   // const targetTime = "20:59:40";
-  const targetTime = "11:29:47";
+  const targetTime = "11:59:47";
 
   // 3. TARGET KOLOM & DATA YANG AKAN DI-COPY PASTE (SPAM)
   // Silakan ganti kata-katanya di dalam tanda kutip berikuit
