@@ -7,23 +7,23 @@ const puppeteer = require("puppeteer");
 
   // 1. Link Spreadsheet War (Gunakan link LENGKAP beserta "?gid=xxx..." agar sheet yang dipilih benar)
   const url =
-    "https://docs.google.com/spreadsheets/d/1FlpJJ2JHQa3rOzAYOwlDqFXKZ22VsQQ5LUiy4ZMx1rY/edit?gid=2020091027#gid=2020091027";
+    "https://docs.google.com/spreadsheets/d/1QirCchZgcxk3Zmc4mZhNgerJ4jbWA2uqVWbjSqRgLl0/edit?gid=0#gid=0";
 
   // 2. Waktu eksekusi (Format: HH:MM:SS) - Tambahkan Detik!
   // Contoh: '13:14:00' atau '13:14:30' (jam 13, menit 14, detik 30)
   // const targetTime = "20:59:40";
-  const targetTime = "21:01:50";
+  const targetTime = "11:26:50";
 
   // 3. TARGET KOLOM & DATA YANG AKAN DI-COPY PASTE (SPAM)
   // Silakan ganti kata-katanya di dalam tanda kutip berikuit
-  const cellTujuan1 = "B96";
-  const dataCopas1 = "Khairun nisa";
+  const cellTujuan1 = "I77";
+  const dataCopas1 = "salwa assyifa, Khairun nisa s,  aliza khansa";
 
-  const cellTujuan2 = "C96";
-  const dataCopas2 = "2313501010067";
+  const cellTujuan2 = "J77";
+  const dataCopas2 = "";
 
-  const cellTujuan3 = "D96";
-  const dataCopas3 = "Pekerjaan ekstraksi";
+  const cellTujuan3 = "K77";
+  const dataCopas3 = " acc ppt bedah flap";
 
   // PENGATURAN GELOMBANG SPAM (Mencegah Crash Google Sheets)
   const jumlahKlikPerSiklus = 30; // 30 kali paste
@@ -42,7 +42,8 @@ const puppeteer = require("puppeteer");
       args: ["--start-maximized"],
     });
 
-    const page = await browser.newPage();
+    // Ubah const menjadi let agar kita bisa mengganti tab-nya nanti
+    let page = await browser.newPage();
 
     // Pergi ke link Google Sheet
     await page.goto(url, { waitUntil: "networkidle2" });
@@ -103,24 +104,32 @@ const puppeteer = require("puppeteer");
       // Lakukan Refresh Halaman di akhir SETIAP siklus (Kecuali yang terakhir)
       if (siklus < totalSiklusRefresh) {
         console.log(
-          "Gelombang selesai. Menyegarkan (Refresh) halaman via F5 otomatis agar tidak crash...",
+          "Gelombang selesai. Membuka TAB BARU agar menghindari peringatan Unsaved Changes...",
         );
         try {
-          await page.reload({ waitUntil: "networkidle2" });
+          // Buka tab baru dan biarkan memuat
+          const newPage = await browser.newPage();
+          await newPage.goto(url, { waitUntil: "networkidle2" });
           await new Promise((r) => setTimeout(r, 4500)); // Tunggu loading web agak lama
+
+          // Tutup tab yang lama secara paksa (ini tidak akan memunculkan popup peringatan)
+          await page.close();
+
+          // Timpa kendali bot dari tab lama ke tab baru
+          page = newPage;
 
           // PENTING: Klik ulang layar supaya API Clipboard dan Keyboard jalan lagi
           await page.bringToFront();
           await page.mouse.click(150, 150);
           await new Promise((r) => setTimeout(r, 1000));
 
-          // Pastikan tulisan masih ada di Clipboard (Kadang refresh bisa ngereset memori)
+          // Pastikan tulisan masih ada di Clipboard (Kadang ganti tab bisa ngereset memori)
           await page.evaluate(
             (teks) => navigator.clipboard.writeText(teks),
             dataGabungan,
           );
         } catch (e) {
-          console.log("Gagal merefresh, lanjut eksekusi...");
+          console.log("Gagal membuat tab baru, lanjut eksekusi...");
         }
       }
     }
