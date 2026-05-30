@@ -12,17 +12,17 @@ const puppeteer = require("puppeteer");
   // 2. Waktu eksekusi (Format: HH:MM:SS) - Tambahkan Detik!
   // Contoh: '13:14:00' atau '13:14:30' (jam 13, menit 14, detik 30)
   // const targetTime = "20:59:40";
-  const targetTime = "11:26:50";
+  const targetTime = "11:29:47";
 
   // 3. TARGET KOLOM & DATA YANG AKAN DI-COPY PASTE (SPAM)
   // Silakan ganti kata-katanya di dalam tanda kutip berikuit
-  const cellTujuan1 = "I77";
-  const dataCopas1 = "salwa assyifa, Khairun nisa s,  aliza khansa";
+  const cellTujuan1 = "I76";
+  const dataCopas1 = "Khairun nisa s, salwa assyifa,  aliza khansa";
 
-  const cellTujuan2 = "J77";
+  const cellTujuan2 = "J76";
   const dataCopas2 = "";
 
-  const cellTujuan3 = "K77";
+  const cellTujuan3 = "K76";
   const dataCopas3 = " acc ppt bedah flap";
 
   // PENGATURAN GELOMBANG SPAM (Mencegah Crash Google Sheets)
