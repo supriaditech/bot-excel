@@ -7,7 +7,7 @@ const puppeteer = require("puppeteer");
 
   // 1. Link Spreadsheet War (Gunakan link LENGKAP beserta "?gid=xxx..." agar sheet yang dipilih benar)
   const url =
-    "https://docs.google.com/spreadsheets/d/1_WdrOVcB9wfziod3liUbtZBMquVpLGByLIFvoSI3TCk/edit?gid=1657747096#gid=1657747096";
+    "https://docs.google.com/spreadsheets/d/1FlpJJ2JHQa3rOzAYOwlDqFXKZ22VsQQ5LUiy4ZMx1rY/edit?gid=1663793201#gid=1663793201";
 
   // 2. Waktu eksekusi (Format: HH:MM:SS) - Tambahkan Detik!
   // Contoh: '13:14:00' atau '13:14:30' (jam 13, menit 14, detik 30)
@@ -16,17 +16,17 @@ const puppeteer = require("puppeteer");
 
   // 3. TARGET KOLOM & DATA YANG AKAN DI-COPY PASTE (SPAM)
   // Silakan ganti kata-katanya di dalam tanda kutip berikuit
-  const cellTujuan1 = "I76";
-  const dataCopas1 = "Khairun nisa s, salwa assyifa,  aliza khansa";
+  const cellTujuan1 = "B56";
+  const dataCopas1 = "Khairun nisa s";
 
-  const cellTujuan2 = "J76";
-  const dataCopas2 = "";
+  const cellTujuan2 = "C57";
+  const dataCopas2 = "2313501010067";
 
-  const cellTujuan3 = "K76";
-  const dataCopas3 = " acc ppt bedah flap";
+  const cellTujuan3 = "D57";
+  const dataCopas3 = "Ekstraksi";
 
   // PENGATURAN GELOMBANG SPAM (Mencegah Crash Google Sheets)
-  const jumlahKlikPerSiklus = 30; // 30 kali paste
+  const jumlahKlikPerSiklus = 300; // 30 kali paste
   const totalSiklusRefresh = 5; // 5 kali refresh/gelombang
   // ==========================================
 
